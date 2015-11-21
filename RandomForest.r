@@ -1,0 +1,8 @@
+#install.packages("randomForest")
+library(randomForest)
+setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
+Dummy.data <- read.delim("C:/Users/Jaini/Desktop/OnlineNewsPopularity/Dummy data.txt")
+#View(Dummy.data)
+rf=randomForest(url~.,data=Dummy.data,mtry=4,ntree=50)
+class(rf)
+print(rf$importance)
