@@ -10,6 +10,18 @@ setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
 dat <- read.table("resources/OnlineNewsPopularity-new-regular-shares.csv", header = TRUE, sep = ",")
 #dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
 
+# Spliting dat into training and test
+# Sample size is set to 66% of the rows in dat
+sample_size <- floor(0.66 * nrow(dat))
+# Seed is used here so that you can replicate this train/test dataset
+set.seed(123)
+# train_index <- sample matrix using sample_size from length(nrows)
+train_index <- sample(seq_len(nrow(dat)), size = sample_size)
+
+# Training and test data
+train_dat <- dat[train_index, ]
+test_dat <- dat[-train_index, ]
+
 # If you want to divide shares into say bins of 10
 # dat$group <- as.numeric(cut(dat$shares, 10))
 
@@ -20,5 +32,6 @@ plot(dat$weekday, dat$shares, type = "p",
      ylab = "Number of shares")
 
 rf=randomForest(shares~.,data=dat,mtry=4,ntree=20)
+#plot(rf)
 class(rf)
 print(rf$importance)
