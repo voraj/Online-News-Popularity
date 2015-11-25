@@ -21,14 +21,14 @@ dtree=rpart(shares~.,data=train_dat,control=rpart.control(10))
 str(dtree)
 dtree
 plot(dtree)
-dtree$variable.importance
+print(dtree$variable.importance)
 
 #Make prediction using dtree
-predictedDT= predict(dtree, test_dat,type=c("matrix"))
-predictedDT
-table(predictedDT,test_dat$shares) #Confusion Matrix
-mean(predictedDT!=test_dat$shares) # 1 ? 
+predictedDT= predict(dtree, test_dat,type=c("class"))
+print(predictedDT)
+print(table(predictedDT,test_dat$shares)) #Confusion Matrix
+print(mean(predictedDT!=test_dat$shares)) # 0.37% is not equal
 
 New=read.csv("predict.csv",header=T)
-predict(dtree,New, type=c("matrix"))
+print(predict(dtree,New, type=c("class")))
 
