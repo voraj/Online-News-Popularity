@@ -19,7 +19,7 @@ test_dat <- dat[-train_index, ]
 #Build a decision tree using rpart
 dtree=rpart(shares~.,data=train_dat,control=rpart.control(10))
 str(dtree)
-dtree
+print(dtree)
 plot(dtree)
 print(dtree$variable.importance)
 
