@@ -21,9 +21,9 @@ setwd("~/workspace/Online-News-Popularity/")
 
 # Reading the database into dat, depending on the need you can use either
 # OnlineNewsPopularity-new-regular-shares.csv : numberical values of shares
-#dat <- read.table("resources/OnlineNewsPopularity-new-regular-shares.csv", header = TRUE, sep = ",")
+dat <- read.table("resources/OnlineNewsPopularity-new-regular-shares.csv", header = TRUE, sep = ",")
 # OnlineNewsPopularity-new-binary-shares.csv : Yes/No values based on a threshold
-dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
+#dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
 
 # Spliting dat into training and test
 # Sample size is set to 66% of the rows in dat
@@ -53,7 +53,7 @@ rpart.plot(dtree)
 
 
 #Make prediction using dtree
-predictedDT= predict(dtree, test_dat,type=c("class"))
+predictedDT = predict(dtree, test_dat, type="class")
 print(predictedDT)
 print(table(predictedDT,test_dat$shares)) #Confusion Matrix
 print(mean(predictedDT!=test_dat$shares)) # 0.37% is not equal
