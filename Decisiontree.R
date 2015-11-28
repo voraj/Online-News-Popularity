@@ -7,11 +7,13 @@
 # Authors: Jaini Vora (voraj) and Ankit Sadana (asadana)
 ##
 
-# We have used the randomForest library in our code, uncomment next line if not already installed
+# We have used the randomForest library in our code, uncomment next two lines if not already installed
 #install.packages("rpart")
+#install.packages("rpart.plot")
 
 # Using the library rpart
 library(rpart)
+library(rpart.plot)
 
 # Setting the working directory
 #setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
@@ -39,8 +41,16 @@ test_dat <- dat[-train_index, ]
 dtree=rpart(shares~.,data=train_dat,control=rpart.control(10))
 str(dtree)
 print(dtree)
-plot(dtree)
+
+# Less pretty decision tree
+#plot(dtree)
+#text(dtree)
+
+# Printing the importance of features in descending order
 print(dtree$variable.importance)
+# Plotting a decision tree with most important features
+rpart.plot(dtree)
+
 
 #Make prediction using dtree
 predictedDT= predict(dtree, test_dat,type=c("class"))
