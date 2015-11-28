@@ -29,6 +29,6 @@ print(predictedDT)
 print(table(predictedDT,test_dat$shares)) #Confusion Matrix
 print(mean(predictedDT!=test_dat$shares)) # 0.37% is not equal
 
-New=read.csv("predict.csv",header=T)
+New=read.csv("resources/predict.csv",header=T)
 print(predict(dtree,New, type=c("class")))
 
