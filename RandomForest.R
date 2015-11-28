@@ -23,10 +23,12 @@ setwd("~/workspace/Online-News-Popularity/")
 # OnlineNewsPopularity-new-binary-shares.csv : Yes/No values based on a threshold
 dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
 
-
 # Creates the random forest with shares as the predicting label
-rf=randomForest(shares~.,data=dat,mtry=4,ntree=100)
-plot(rf)  #plots the random forest
+rf=randomForest(shares~., data=dat, ntree=100, keep.forest=FALSE, importance = TRUE)
+plot(rf, log="y")  #plots the random forest
+varImpPlot(rf)
 class(rf)
 print(rf$confusion) # prints the confusion matrix
 print(rf$importance) #prints the importance of various attrbutes in decision making
+
+
