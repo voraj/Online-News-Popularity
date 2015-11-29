@@ -16,14 +16,14 @@ library(rpart)
 library(rpart.plot)
 
 # Setting the working directory
-#setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
+#setwd("C:/Users/Jaini/Desktop/Online-News-Popularity")
 setwd("~/workspace/Online-News-Popularity/")
 
 # Reading the database into dat, depending on the need you can use either
 # OnlineNewsPopularity-new-regular-shares.csv : numberical values of shares
-dat <- read.table("resources/OnlineNewsPopularity-new-regular-shares.csv", header = TRUE, sep = ",")
+#dat <- read.table("resources/OnlineNewsPopularity-new-regular-shares.csv", header = TRUE, sep = ",")
 # OnlineNewsPopularity-new-binary-shares.csv : Yes/No values based on a threshold
-#dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
+dat <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")
 
 # Spliting dat into training and test
 # Sample size is set to 66% of the rows in dat
@@ -42,15 +42,10 @@ dtree=rpart(shares~.,data=train_dat,control=rpart.control(10))
 str(dtree)
 print(dtree)
 
-# Less pretty decision tree
-#plot(dtree)
-#text(dtree)
-
 # Printing the importance of features in descending order
 print(dtree$variable.importance)
 # Plotting a decision tree with most important features
 rpart.plot(dtree)
-
 
 #Make prediction using dtree
 predictedDT = predict(dtree, test_dat, type="class")
