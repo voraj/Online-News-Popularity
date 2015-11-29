@@ -9,7 +9,7 @@
 
 # Setting working directory
 #setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
-setwd("~/workspace/Online-News-Popularity/")
+#setwd("~/workspace/Online-News-Popularity/")
 
 # Reading transformed dataset (with binary shares)
 dat.binary <- read.table("resources/OnlineNewsPopularity-new-binary-shares.csv", header = TRUE, sep = ",")

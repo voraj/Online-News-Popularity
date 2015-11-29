@@ -15,7 +15,7 @@ library(randomForest)
 
 # Setting the working directory
 #setwd("C:/Users/Jaini/Desktop/OnlineNewsPopularity")
-setwd("~/workspace/Online-News-Popularity/")
+#setwd("~/workspace/Online-News-Popularity/")
 
 # Reading the database into dat, depending on the need you can use either
 # OnlineNewsPopularity-new-regular-shares.csv : numberical values of shares
