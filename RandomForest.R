@@ -51,8 +51,9 @@ rfPlot.legend <- (if (is.null(rf$test$err.rate)) {colnames(rf$err.rate)}
 else {colnames(rf$test$err.rate)})
 # Putting the legend on the plot
 legend("top", cex =1.0, legend=rfPlot.legend, lty=c(1,2,3), col=c(1,2,3), horiz=T)
-# Generating Importance plot
-varImpPlot(rf, type=1)
+# Generating Importance plots
+varImpPlot(rf, type = 1)
+varImpPlot(rf, type = 2)
 
 print(rf$confusion) # prints the confusion matrix
 print(rf$importance) #prints the importance of various attrbutes in decision making
