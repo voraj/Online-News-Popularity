@@ -44,7 +44,7 @@ testLabel <- test_dat[ , (ncol(test_dat))]
 
 # Creates the random forest with shares as the predicting label
 rf=randomForest(x = trainFeatures, y = trainLabel, xtest = testFeatures , ytest = testLabel, 
-                ntree=100, keep.forest=TRUE, importance = TRUE)
+                ntree=100, importance = TRUE)
 plot(rf)  #plots the random forest
 # creating a legend for rf
 rfPlot.legend <- (if (is.null(rf$test$err.rate)) {colnames(rf$err.rate)}
